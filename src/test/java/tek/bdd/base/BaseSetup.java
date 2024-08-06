@@ -10,16 +10,16 @@ public class BaseSetup {
     //Encapsulating driver instance
     private static WebDriver driver;
 
-    public void setupBrowser() {
+    public void setupBrowser(){
         driver = new ChromeDriver();
         driver.get("https://retail.tekschool-students.com/");
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
     }
 
-    public void quitBrowser() {
+    public void quitBrowser(){
         //null check before quit
-        if (driver != null) {
+        if(driver !=null){
             driver.quit();
         }
     }
@@ -29,4 +29,5 @@ public class BaseSetup {
     public WebDriver getDriver() {
         return driver;
     }
+
 }

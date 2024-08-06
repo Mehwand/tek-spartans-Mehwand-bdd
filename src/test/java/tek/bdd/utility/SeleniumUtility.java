@@ -9,11 +9,15 @@ import tek.bdd.base.BaseSetup;
 
 import java.time.Duration;
 
+import static java.sql.DriverManager.getDriver;
+
+
 public class SeleniumUtility extends BaseSetup {
 
     private WebDriverWait getWait() {
         return new WebDriverWait(getDriver(), Duration.ofSeconds(20));
     }
+
 
     private WebElement waitForVisibility(By locator) {
         return getWait().until(ExpectedConditions.visibilityOfElementLocated(locator));
@@ -31,6 +35,15 @@ public class SeleniumUtility extends BaseSetup {
     //Create method for getting the text of a locator
     public String getElementText(By locator) {
         return waitForVisibility(locator).getText();
+    }
+    public boolean isElementEnabled(By locator) {
+        return waitForVisibility(locator)
+                .isEnabled();
+    }
+
+    public boolean isElementDisplayed(By locator) {
+        return waitForVisibility(locator)
+                .isDisplayed();
     }
 
 }
